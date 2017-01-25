@@ -214,7 +214,7 @@ NSString *const kFCNearestStormBearing = @"nearestStormBearing";
     NSString *urlString = [self urlStringforLatitude:lat longitude:lon time:time exclusions:exclusions extend:(NSString *)extendCommand language:languageCode];
     
 #ifndef NDEBUG
-    NSLog(@"Forecastr: Checking forecast for %@", urlString);
+//    NSLog(@"Forecastr: Checking forecast for %@", urlString);
 #endif
     
     NSString *callback = self.callback;
@@ -371,7 +371,7 @@ NSString *const kFCNearestStormBearing = @"nearestStormBearing";
                             NSDate *rightNow = [NSDate date];
                             if ([rightNow compare:expirationTime] == NSOrderedAscending) {
 #ifndef NDEBUG
-                                NSLog(@"Forecastr: Found cached item for %@", urlString);
+//                                NSLog(@"Forecastr: Found cached item for %@", urlString);
 #endif
                                 cachedItemWasFound = YES;
                                 // Cache item is still fresh
@@ -411,7 +411,7 @@ NSString *const kFCNearestStormBearing = @"nearestStormBearing";
 - (void)cacheForecast:(id)forecast withURLString:(NSString *)urlString
 {
 #ifndef NDEBUG
-    NSLog(@"Forecastr: Caching item for %@", urlString);
+//    NSLog(@"Forecastr: Caching item for %@", urlString);
 #endif
     
     // Save to cache on a background thread
@@ -447,7 +447,7 @@ NSString *const kFCNearestStormBearing = @"nearestStormBearing";
     NSMutableDictionary *cachedForecasts = [[userDefaults dictionaryForKey:kFCCacheKey] mutableCopy];
     if (cachedForecasts) {
 #ifndef NDEBUG
-        NSLog(@"Forecastr: Removing cached item for %@", cacheKey);
+//        NSLog(@"Forecastr: Removing cached item for %@", cacheKey);
 #endif
         [cachedForecasts removeObjectForKey:cacheKey];
         [userDefaults setObject:cachedForecasts forKey:kFCCacheKey];
@@ -459,7 +459,7 @@ NSString *const kFCNearestStormBearing = @"nearestStormBearing";
 - (void)flushCache
 {
 #ifndef NDEBUG
-    NSLog(@"Forecastr: Flushing the cache...");
+//    NSLog(@"Forecastr: Flushing the cache...");
 #endif
     [userDefaults removeObjectForKey:kFCCacheKey];
     [userDefaults synchronize];
